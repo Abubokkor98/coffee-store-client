@@ -1,9 +1,43 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Users() {
   const loadedUser = useLoaderData();
   const [users, setUsers] = useState(loadedUser);
+
+  const handleUserDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // delete from the database
+        fetch(`http://localhost:5000/users/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+
+              const remainingUsers = users.filter(user=> user._id !==id);
+              setUsers(remainingUsers);
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div>
       <h2>Users: {users.length}</h2>
@@ -29,7 +63,12 @@ export default function Users() {
                 <td>{user.createdAt}</td>
                 <td className="space-x-2">
                   <button className="btn">edite</button>
-                  <button className="btn">X</button>
+                  <button
+                    onClick={() => handleUserDelete(user._id)}
+                    className="btn"
+                  >
+                    X
+                  </button>
                 </td>
               </tr>
             ))}
