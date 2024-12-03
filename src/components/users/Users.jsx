@@ -50,6 +50,7 @@ export default function Users() {
               <th>Name</th>
               <th>Email</th>
               <th>Created At</th>
+              <th>Last Login At</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -61,6 +62,7 @@ export default function Users() {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.createdAt}</td>
+                <td>{user.lastSignInTime}</td>
                 <td className="space-x-2">
                   <button className="btn">edite</button>
                   <button
