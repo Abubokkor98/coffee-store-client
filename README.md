@@ -1,8 +1,8 @@
-# React + Vite
+# Live Link
+https://coffee-store-4fd80.web.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Back-end API's
+1--> https://coffee-store-server-eta-peach.vercel.app
+2--> https://coffee-store-server-eta-peach.vercel.app/coffee
+3--> https://coffee-store-server-eta-peach.vercel.app/users
